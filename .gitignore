@@ -11,6 +11,13 @@
 *.jpg
 *.zip
 
+# Language Filter
+*.html linguist-vendored
+*.txt linguist-vendored
+*.cmake linguist-vendored
+*.js linguist-vendored
+*.cu linguist-vendored
+
 # User-specific files
 *.rsuser
 *.suo
