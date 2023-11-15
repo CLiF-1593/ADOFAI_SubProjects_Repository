@@ -1,4 +1,4 @@
-# ADOFAI_SubProjects_Repository
+# ADOFAI Sub-Projects Repository
 
 This repository is a collection of several small projects related to ADOFAI.   
 Developed By CLiF   
