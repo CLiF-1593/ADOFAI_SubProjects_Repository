@@ -7,3 +7,6 @@
 *.cmake linguist-vendored
 *.js linguist-vendored
 *.cu linguist-vendored
+*.css linguist-vendored
+*.xsl linguist-vendored
+makefile linguist-vendored
