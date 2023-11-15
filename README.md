@@ -16,7 +16,7 @@ Developed By CLiF
    : Track the motion of the person in the video and generate the tile dancer.
    
 3. Formula To Map (2023.06.11) **   
-   : Generate the map which is shaped like a graph of formulas. (Rectangular Equations, Polar Equations, Parametric Equations)
+   : Generate the map which is shaped like a graph of formulas. (Cartesian Equations, Polar Equations, Parametric Equations)
    
 4. Magic Square (2022.01.23)   
    : Make the relative bpm constantly. (For Magic Square)
