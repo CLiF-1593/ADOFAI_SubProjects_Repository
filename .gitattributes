@@ -9,4 +9,4 @@
 *.cu linguist-vendored
 *.css linguist-vendored
 *.xsl linguist-vendored
-makefile linguist-vendored
+*.h linguist-language=cpp
