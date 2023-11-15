@@ -3,6 +3,13 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# My Filter
+*.adofai
+*.mp4
+*.png
+*.bmp
+*.jpg
+
 # User-specific files
 *.rsuser
 *.suo
