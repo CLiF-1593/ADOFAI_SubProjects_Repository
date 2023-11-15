@@ -1,2 +1,9 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Language Filter
+*.html linguist-vendored
+*.txt linguist-vendored
+*.cmake linguist-vendored
+*.js linguist-vendored
+*.cu linguist-vendored
