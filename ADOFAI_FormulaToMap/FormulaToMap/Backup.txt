@@ -1,0 +1,115 @@
+#include <iostream>
+#include <string>
+#include <Windows.h>
+#include <ctime>
+#include <vector>
+#include "File.h"
+#include "EventJson.h"
+#include "AngleData.h"
+#include "Physics.h"
+#include "EasingFunctionSet.h"
+using namespace std;
+
+#define pi 3.14159265
+
+// derived function (dy/dx)
+double function(double x, double y) {
+	return -x/y;
+	return -(x * x + y) / (y * y + x);
+}
+
+double SetAngle(double x) {
+	int d = x * 1000.0;
+	return (double)d / 1000.0;
+}
+
+int main() {
+	SetConsoleOutputCP(CP_UTF8);
+	SetConsoleCP(CP_UTF8);
+
+	cout << "[ ADOFAI Formula To ADOFAI Map ]" << endl << endl;
+	cout << "Developer : CLiF (https://www.youtube.com/@clif-1593)" << endl;
+	cout << "Version : v0.1" << endl << endl;
+
+	cout << "< Choose the ADOFAI File - 얼불춤 파일 선택 >" << endl;
+	string adofai_path = OpenFileName(ADOFAI);
+	if (adofai_path.empty())
+		return 0;
+	string folder_path = adofai_path;
+	while (folder_path.back() != '\\') {
+		folder_path.pop_back();
+	}
+
+	Json::Value adofai;
+	ReadJson(adofai_path, adofai);
+
+	vector<double> angles;
+
+	double x = 0;
+	double y = 4;
+	
+	int loop = 1000;
+	double delta = 0.1;
+
+	auto Function = function;
+	bool inversed_direction = false;
+	double prev_angle = 0.0;
+	for (int i = 0; i < loop; i++) {
+		double slope = Function(x, y);
+		double angle = atan(slope);
+
+		
+		if (i && abs(prev_angle - angle) > 3.0) {
+			inversed_direction = !inversed_direction;
+		}
+		prev_angle = angle;
+
+		if (inversed_direction) {
+			if (angle > 0.0) {
+				angle -= 3.14159265;
+			}
+			else {
+				angle += 3.14159265;
+			}
+		}
+
+		cout << "x : " << x << ", y : " << y << ", angle : " << angle * 360 / 2.0 / 3.14159265 << endl;
+
+		x += cos(angle) * delta;
+		y += sin(angle) * delta;
+
+		angles.push_back(SetAngle(angle * 360 / 2.0 / 3.14159265));
+	}
+
+	cout << "> Setting ADOFAI File . . ." << endl;
+	
+	//adofai["angleData"].clear();
+
+	for (int i = 0; i < angles.size(); i++) {
+		adofai["angleData"].append(angles[i]);
+	}
+	
+	//adofai["actions"].clear();
+
+	for (int i = 2; i < angles.size(); i++) {
+		double delta = angles[i] - (angles[i - 1] + 180);
+		while (delta < 0.0) delta += 360.0;
+		while (delta >= 360.0) delta -= 360.0;
+
+		double prev = (angles[i - 1] + 180) * 2 * pi / 360;
+		double next = (angles[i]) * 2 * pi / 360;
+		double move = abs(cos(next) - cos(prev));
+
+		double bpm = 100 / move;
+		bpm *= 180.0 / delta;
+		adofai["actions"].append(SetSpeed(i, "Bpm", bpm, 1));
+	}
+
+	cout << "> Saving ADOFAI File . . ." << endl;
+	WriteJson(adofai, adofai_path);
+
+	cout << endl << endl;
+	cout << "< Completed!! - 완료되었습니다 >" << endl << endl;
+	system("pause");
+	return 0;
+}
