@@ -182,7 +182,7 @@ class Body:
         self.tile_line(json, begin_tile_num, core_tile_cnt, self.neck, self.core, offset, duration)
         begin_tile_num += core_tile_cnt
 
-        json["actions"].append(self.get_action(begin_tile_num, self.head.x * self.tile_per_pixel, -self.head.y * self.tile_per_pixel + 0.5, 350, 0, offset, duration))
+        json["actions"].append(self.get_action(begin_tile_num, self.head.x * self.tile_per_pixel, -self.head.y * self.tile_per_pixel + 0.5, 1.5 * self.distance(self.core, self.neck), 0, offset, duration))
 
         return json
 
