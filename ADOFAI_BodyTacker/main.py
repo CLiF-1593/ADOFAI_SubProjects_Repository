@@ -190,7 +190,7 @@ class Body:
 
 def main():
     detector = poseDetector()
-    cap = cv2.VideoCapture("video_dance.mp4")
+    cap = cv2.VideoCapture("video.mp4")
 
     w = round(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     h = round(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
