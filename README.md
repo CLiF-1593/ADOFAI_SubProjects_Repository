@@ -7,7 +7,7 @@ Developed By CLiF
 
 ### ✅ | Verified
 > These projects are verified (It has enough quality to be seen as a finished project)
-> But they can have some errors and development can continue. (Beta Version)
+> But they can have some major or minor errors and development can continue. (Beta Version)
    
 1. All Hold (2022.06.23)   
    : Replace all tiles in the map with the hold effect.
