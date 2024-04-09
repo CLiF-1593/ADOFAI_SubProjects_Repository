@@ -6,7 +6,7 @@ Developed By CLiF
 ## ✨| List of Projects
 
 ### ✅ | Verified
-> These projects are verified (It has enough quality to be seen as a finished project)
+> These projects are verified (It has enough quality to be seen as a finished project)         
 > But they can have some major or minor errors and development can continue. (Beta Version)
    
 1. All Hold (2022.06.23)   
