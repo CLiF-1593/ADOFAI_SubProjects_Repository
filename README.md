@@ -17,23 +17,26 @@ Developed By CLiF
    
 3. Formula To Map (2023.06.11) **   
    : Generate the map which is shaped like a graph of formulas. (Cartesian Equations, Polar Equations, Parametric Equations)
-   
-4. Magic Square (2022.01.23)   
+
+4. Geometrize (2024.02.06) ***
+   : Geometrize the video as frames and generate the geometrized adofai file by using the tiles.
+
+5. Magic Square (2022.01.23)   
    : Make the relative bpm constantly. (For Magic Square)
    
-5. Midspin Map Convertor (2022.01.27)   
+6. Midspin Map Convertor (2022.01.27)   
    : Convert all of the tiles in the map to only midspin tiles.
    
-6. Painter (2022.01.26) *   
+7. Painter (2022.01.26) *   
    : Display the image file with tiles.
    
-7. Potential Energy (2023.06.10) *   
+8. Potential Energy (2023.06.10) *   
    : Roll the 3 planets on the map physically based on the energy conservation law.
    
-8. Screen Resizer (2022.02.20) *   
+9. Screen Resizer (2022.02.20) *   
    : Customize the resolution of the game.
    
-9. Simultaneous Hit (2022.01.26)   
+10. Simultaneous Hit (2022.01.26)   
    : Convert all of the tiles in the map to pseudo tiles.
 
 ### 🛠️ | Developing

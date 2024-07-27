@@ -1,4 +1,5 @@
-import main
+import video
+import painter
 
 deco = {
     "floor": 0,
@@ -10,7 +11,7 @@ deco = {
     "trackType": "Normal",
     "trackAngle": 180,
     "trackColorType": "Single",
-    "trackColor": "debb7b",
+    "trackColor": "debb7b00",
     "secondaryTrackColor": "ffffff",
     "trackColorAnimDuration": 2,
     "trackOpacity": 100,
@@ -48,7 +49,7 @@ deco_attribute = {
     "eventTag": "VIDEO",
 }
 
-def set_deco_attribute(offset, data, duration, tag):
+def set_deco_attribute(offset, data, duration, tag, tile_num = 0):
     r = data["color"][0]
     g = data["color"][1]
     b = data["color"][2]
@@ -58,6 +59,8 @@ def set_deco_attribute(offset, data, duration, tag):
     deco_attribute["duration"] = 0
     deco_attribute["angleOffset"] = offset
     deco_attribute["tag"] = f"deco{tag}"
+    deco_attribute["floor"] = tile_num
+    deco_attribute["duration"] = duration
     return deco_attribute
 
 deco_move = {
@@ -71,22 +74,25 @@ deco_move = {
     "scale": [0, 0],
     "parallaxOffset": [0, 0],
     "angleOffset": 0,
-    "ease": "Linear",
+    "ease": "OutExpo",
     "eventTag": "VIDEO",
 }
 
-def set_deco_move(offset, data, duration, tag):
-    x = (data["data"][0] - main.WIDTH / 2) / 100
-    y = -(data["data"][1] - main.HEIGHT / 2) / 100
+def set_deco_move(offset, data, duration, tag, x_offset = 0, y_offset = 0, tile_num = 0):
+    x = (data["data"][0] - video.WIDTH / 2) / 100
+    y = -(data["data"][1] - video.HEIGHT / 2) / 100
     w = (data["data"][2] - data["data"][0]) * 1.0
-    h = (data["data"][3] - data["data"][1]) * 1.7
+    h = (data["data"][3] - data["data"][1]) * 1.75
     x += w / 2 / 100
-    y -= h / 2 / 100 / 1.7
+    y -= h / 2 / 100 / 1.75
 
     x *= 2
     y *= 2
     w *= 2
     h *= 2
+
+    x += x_offset
+    y += y_offset
 
     if data["type"] == 1:
         rot = 0
@@ -98,6 +104,8 @@ def set_deco_move(offset, data, duration, tag):
     deco_move["angleOffset"] = offset
     deco_move["duration"] = 0
     deco_move["tag"] = f"deco{tag}"
+    deco_move["floor"] = tile_num
+    deco_move["duration"] = duration
     return deco_move
 
 loop = {
@@ -110,3 +118,12 @@ loop = {
     "executeOnCurrentFloor": False,
     "tag": "VIDEO",
 }
+
+tile_move = { "floor": 1, "eventType": "MoveTrack", "startTile": [0, "ThisTile"], "endTile": [0, "ThisTile"], "gapLength": 0, "duration": 1, "positionOffset": [0, 0], "rotationOffset": 0, "angleOffset": 0, "ease": "Linear", "maxVfxOnly": False, "eventTag": "", }
+
+def set_tile_move_to_end(floor, x, y):
+    tile_move["floor"] = floor
+    tile_move["positionOffset"] = [x - floor, y]
+    tile_move["startTile"] = [0, "ThisTile"]
+    tile_move["endTile"] = [0, "End"]
+    return tile_move
